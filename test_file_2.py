@@ -57,7 +57,8 @@ def process_image(uploaded_file):
 
         # Resize the corner image to 2.5x its original size
         new_size = (int(corner_width * 2.5), int(corner_height * 2.5))
-        corner_image_resized = corner_image.resize(new_size, Image.ANTIALIAS)
+        corner_image_resized = corner_image.resize(new_size, Image.Resampling.LANCZOS)
+
 
         # Calculate bottom-right position
         corner_x = template_width - corner_image_resized.width - 20  # 20px padding
