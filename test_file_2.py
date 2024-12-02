@@ -55,12 +55,17 @@ def process_image(uploaded_file):
         corner_image = Image.open(corner_image_path).convert("RGBA")
         corner_width, corner_height = corner_image.size
 
+        # Resize the corner image to 2.5x its original size
+        new_size = (int(corner_width * 2.5), int(corner_height * 2.5))
+        corner_image_resized = corner_image.resize(new_size, Image.ANTIALIAS)
+
         # Calculate bottom-right position
-        corner_x = template_width - corner_width - 20  # 20px padding
-        corner_y = template_height - corner_height - 20  # 20px padding
+        corner_x = template_width - corner_image_resized.width - 20  # 20px padding
+        corner_y = template_height - corner_image_resized.height - 20  # 20px padding
 
         # Paste the bottom-right image onto the template
-        template.paste(corner_image, (corner_x, corner_y), corner_image)
+        template.paste(corner_image_resized, (corner_x, corner_y), corner_image_resized)
+
 
     # Save the result to a BytesIO stream
     img_stream = BytesIO()
@@ -70,14 +75,14 @@ def process_image(uploaded_file):
 
 # Streamlit UI
 st.title("Image Processing App")
-st.write("Upload a center image to process and display the modified template.")
+st.write("Upload a image to process the poster template.")
 
 # File uploader
-uploaded_file = st.file_uploader("Choose the center image file", type=["png", "jpg", "jpeg"])
+uploaded_file = st.file_uploader("Choose the image file", type=["png", "jpg", "jpeg"])
 
 if uploaded_file is not None:
     # Display uploaded center image
-    st.image(uploaded_file, caption="DALLE3 Image", use_column_width=True)
+    st.image(uploaded_file, caption="DALLE 3 Image", use_column_width=True)
 
     # Process the images
     st.write("Processing the image...")
