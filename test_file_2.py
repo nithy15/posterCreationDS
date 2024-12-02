@@ -56,13 +56,13 @@ def process_image(uploaded_file):
         corner_width, corner_height = corner_image.size
 
         # Resize the corner image to 2.5x its original size
-        new_size = (int(corner_width * 1.5), int(corner_height * 1.5))
+        new_size = (int(corner_width * 1.3), int(corner_height * 1.3))
         corner_image_resized = corner_image.resize(new_size, Image.Resampling.LANCZOS)
 
 
         # Calculate bottom-right position
-        corner_x = template_width - corner_image_resized.width - 7  # 20px padding
-        corner_y = template_height - corner_image_resized.height - 7  # 20px padding
+        corner_x = template_width - corner_image_resized.width - 5  # 20px padding
+        corner_y = template_height - corner_image_resized.height - 5  # 20px padding
 
         # Paste the bottom-right image onto the template
         template.paste(corner_image_resized, (corner_x, corner_y), corner_image_resized)
