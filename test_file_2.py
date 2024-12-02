@@ -56,7 +56,7 @@ def process_image(uploaded_file):
         corner_width, corner_height = corner_image.size
 
         # Resize the corner image to 2.5x its original size
-        new_size = (int(corner_width * 1.3), int(corner_height * 1.3))
+        new_size = (int(corner_width * 1.5), int(corner_height * 1.5))
         corner_image_resized = corner_image.resize(new_size, Image.Resampling.LANCZOS)
 
 
