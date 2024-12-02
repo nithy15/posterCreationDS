@@ -61,8 +61,8 @@ def process_image(uploaded_file):
 
 
         # Calculate bottom-right position
-        corner_x = template_width - corner_image_resized.width - 10  # 20px padding
-        corner_y = template_height - corner_image_resized.height - 10  # 20px padding
+        corner_x = template_width - corner_image_resized.width - 7  # 20px padding
+        corner_y = template_height - corner_image_resized.height - 7  # 20px padding
 
         # Paste the bottom-right image onto the template
         template.paste(corner_image_resized, (corner_x, corner_y), corner_image_resized)
