@@ -21,7 +21,7 @@ def process_image(uploaded_file):
     center_array = np.array(center_image)
 
     # Define a mask for white areas
-    threshold = 230
+    threshold = 235
     white_mask = (center_array[..., :3] > threshold).all(axis=-1)
 
     # Label connected regions of the white mask
@@ -83,7 +83,7 @@ uploaded_file = st.file_uploader("Choose the image file", type=["png", "jpg", "j
 
 if uploaded_file is not None:
     # Display uploaded center image
-    st.image(uploaded_file, caption="DALLE 3 Image", use_column_width=True)
+    st.image(uploaded_file, caption="DALLE 3 Image", use_container_width=True)
 
     # Process the images
     st.write("Processing the image...")
@@ -91,7 +91,7 @@ if uploaded_file is not None:
 
     # Display processed image
     processed_image = Image.open(processed_image_stream)
-    st.image(processed_image, caption="Poster Template", use_column_width=True)
+    st.image(processed_image, caption="Poster Template", use_container_width=True)
 
     # Provide download option
     st.download_button(
