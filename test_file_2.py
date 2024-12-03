@@ -1,14 +1,30 @@
 import streamlit as st
 from PIL import Image, ImageOps
 import numpy as np
+import random
 from skimage.measure import label
 from io import BytesIO
 import os
+pastel_colors = {
+    "Powder Blue": (176, 224, 230),
+    "Light Coral": (240, 128, 128),
+    "Lavender": (230, 230, 250),
+    "Peach Puff": (255, 218, 185),
+    "Pale Green": (152, 251, 152),
+    "Misty Rose": (255, 228, 225),
+    "Lemon Chiffon": (255, 250, 205),
+    "Thistle": (216, 191, 216),
+    "Periwinkle": (144, 162, 239),
+    "Light Pink": (233, 163, 181),
+    "Lavender Gray": (194, 159, 195),
+    "Pale Turquoise": (133, 192, 195),
+    "Desaturated Green": (142, 184, 158)
+}
 
 def process_image(uploaded_file):
     # Parameters
     template_width, template_height = 1600, 1200
-    background_color = (200, 230, 255)
+    random_color_name, background_color = random.choice(list(pastel_colors.items()))
     corner_image_path = os.path.join(os.getcwd(), "corner_image.png")  # Path to the corner image
     
     # Create a blank template
